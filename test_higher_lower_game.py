@@ -49,8 +49,9 @@ class TestCheckUserGuess:
     new_game_test_4 = HigherLower()
     @pytest.mark.parametrize("user_guess, followers_count_a, followers_count_b, result", [
         ("A", 100, 84, ("You're Right! Current score: 1.", True)),
-        ("B", 84, 100, ("You're Right! Current score: 1.", True)),
-        ("B", 100, 70, ("Sorry, that's wrong. Final score: 0.", False)),
-        ("A", 65, 84, ("Sorry, that's wrong. Final score: 0", False)),
+        ("B", 84, 100, ("You're Right! Current score: 2.", True)),
+        ("B", 100, 70, ("Sorry, that's wrong. Final score: 2", False)),
+        ("A", 65, 84, ("Sorry, that's wrong. Final score: 2", False)),
     ])
-    
+    def test_check_user_guess(self, user_guess, followers_count_a, followers_count_b, result):
+        assert self.new_game_test_4.check_user_guess(user_guess, followers_count_a, followers_count_b) == result
